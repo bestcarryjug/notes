@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<style>
+  body {
+    width: 100vw;
+    height: 100vh;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    background: #eee;
+}
+.area {
+    margin: auto;
+    display: grid;
+    width: 300px;
+    height: 300px;
+    padding: 60px;
+    border-radius: 50%;
+    box-shadow: 20px 20px 20px #bdbdbd;
+    background: white;
+    -webkit-transition: all 1s ease-out;
+    transition: all 1s ease-out;
+    grid-template-rows: repeat(5, 60px);
+    grid-template-columns: repeat(5, 60px);
+    grid-template-areas: ".  g  g  g  . " "o_ .  .  .  . " "o  .  e  e  . " "o  .  .  .  l " ".  g_ g_ g_ . ";
+}
+.area:hover {
+    -webkit-transform: translate(20px, 20px);
+    -ms-transform: translate(20px, 20px);
+    transform: translate(20px, 20px);
+    box-shadow: 0 0 0 #9e9e9e;
+}
+.g {
+    grid-area: g;
+    background: #ea4335;
+}
+.o_ {
+    grid-area: o_;
+    background: #ff9800;
+}
+.o {
+    grid-area: o;
+    background: #fbbc05;
+}
+.g_ {
+    grid-area: g_;
+    background: #34a853;
+}
+.l {
+    grid-area: l;
+    background: #00bcd4;
+}
+.e {
+    grid-area: e;
+    background: #4285f4;
+}
+.x {
+    grid-area: x;
+    background: #9e9e9e;
+}
+</style>
+<body>
+    <div class="area">
+        <div class="g"></div>
+        <div class="o_"></div>
+        <div class="o"></div>
+        <div class="g_"></div>
+        <div class="l"></div>
+        <div class="e"></div>
+    </div>
+</body>
+</html>

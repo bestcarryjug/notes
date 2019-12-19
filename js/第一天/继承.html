@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+  // function father(name) {
+  //   this.name = name
+  //   this.iswho = function () {
+  //     console.log(`我是${this.name}`)
+  //   }
+  // }
+  // father.prototype.run = function () {
+  //   console.log(`${this.name}正在奔跑`)
+  // }
+
+  //1 通过原型继承 子类构造指向父类实例
+  // function son() { 
+
+  // }
+  // son.prototype = new father()
+  // son.prototype.name = '小明'
+  // let son1 = new son()
+  // console.log(son1.name) //小明
+  // console.iswho() //我是小明
+  // console.run() //小明正在奔跑
+  //优点:继承了父类构造及父类原型的所有属性及方法
+  //缺点:所有继承来的属性及方法全部是公有的并且无法传参不够灵活继承单一
+
+  // //2借用构造继承
+  // function son(name) {
+  //   father.call(this, name)
+  // }
+
+  // let son2 = new son('小明')
+  // console.log(son1.name) //小明
+  // console.iswho() //我是小明
+  // console.run() //报错
+  //优点:解决了原型继承无法传参、继承单一的问题，继承来的属性私有
+  //缺点:不在父类的原型链上无法访问父类原型的属性
+
+  //3组合继承
+  // function son(name) {
+  //   father.call(this, name)
+  // }
+  // son.prototype = new father()
+  // let son3 = new son('小明')
+  // console.log(son1.name) //小明
+  // console.iswho() //我是小明
+  // console.run() //小明正在奔跑
+  // //优点:解决了借用构造继承不在父类的原型链上的问题
+  // //缺点:调用了两遍父类构造
+  //4寄生式组合继承
+  // function son(name) {
+  //   father.call(this, name)
+  // }
+  // console.log(son.prototype);
+
+  // console.log(father.constructor);
+
+  // (function () {
+  //   function F() {
+
+  //   }
+  //   F.prototype = father.prototype;
+  //   son.prototype = new F();
+  //   console.log(father.prototype.__proto__);
+  // })()
+
+  // let son4 = new son('小明')
+  // console.log(Object.prototype.constructor.__proto__)
+  //解决了调用两次父类构造的问题 比较完美 
+  function father(name) {
+    this.name = name
+  }
+  father.prototype.myName = function () {
+    console.log(`我是${this.name}`)
+  }
+  function son(name){
+	father.call(this,name) //借调传参
+}
+(function(){
+	let F = function(){}
+	F.prototype = father.prototype
+	son.prototype = new F()
+})()
+let sonSl = new son('小明')
+sonSl.myName() //我是小明
+</script>
+
+</html>

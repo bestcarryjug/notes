@@ -1,0 +1,9 @@
+js中只有对象具有__proto__及consuctor属性
+__proto__ 指向原型对象
+consuctor 指向该对象的构造
+
+由于函数也是对象那么函数同时具有prototype及__proto__及consuctor
+prototype指向该构造实例的原型对象
+consuctor指向Function构造
+
+在构造被编译时会新建一个对象作为原型对象 它只有一个consuctor属性指向该构造

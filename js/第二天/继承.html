@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  
+</body>
+<script>  
+  //准备一个父类
+  let person = function (name) {
+    this.name = name;
+  }
+  person.prototype.introduction = function () {
+      console.log(`我是${this.name}`)
+    }
+  // //1 原型继承（子类构造直接指向父类实例）
+  // let son1 = function () {
+    
+  // }
+  // son1.prototype = new person('原型继承')
+  // let sonSl = new son1()
+  // console.log(sonSl.name) //原型继承
+  // console.log(sonSl.introduction()) //我是原型继承
+  // console.log(sonSl instanceof person) //true
+  // //缺点：1：无法灵活传参 2：所有子类全部共享父类实例属性一改全改
+
+  // //2 借用构造继承
+  // let son2 = function (name){
+  //   person.call(this,name)
+  // }
+  // let sonSl = new son2('借用构造继承')
+  // console.log(sonSl.name) //借用构造继承
+  // console.log(sonSl.introduction()) //sonSl.introduction is not a function
+  // console.log(sonSl instanceof person) //false
+  // //缺点：1：并不在父类原型链上无法继承父类原型属性
+
+   //3 组合继承
+  //  let son3 = function (name) { //当son3构造被编译是会有个默认的prototype对象该对象会有一个consuctor属性指向该构造
+  //    person.call(this,name)
+  //  }
+  //  son3.prototype = new person() //将子类原型指向父类实例
+  //  son3.prototype.consuctor = son3 //修复下consuctor
+  //  let sonSl = new son3('组合继承')
+  //  console.log(sonSl.name) //组合继承
+  //  console.log(sonSl.introduction()) //我是组合继承
+  //  console.log(sonSl instanceof person) //true
+  //缺点: 调用了两次父类构造
+
+  // //4 寄生式组合继承
+  // let son4 = function (name) {
+  //   person.call(this,name)
+  // }; //这里需要加个分号 ECMAScript规范具有分号自动插入规则 匿名函数前后不会自动添加分号会导致解析失败 
+  // (function () {
+  //   let F = function () {
+      
+  //   }
+  //   F.prototype = person.prototype
+  //   son4.prototype = new F() //第二次优化为调用一个空的构造
+  //   son4.prototype.consuctor = son4 
+  // })()
+  // let sonSl = new son4('寄生式组合继承')
+  // console.log(sonSl.name) //寄生式组合继承
+  // console.log(sonSl.introduction()) //我是寄生式组合继承
+  // console.log(sonSl instanceof person) //true
+  // //解决了以上缺点
+
+  //其余的一些继承方式
+  //原型式继承 用来进行对象的继承 无法灵活传参 共享原型属性
+  // let obj = {
+  //   name:'xxx',
+  //   introduction:function(){
+  //     console.log(`我是${this.name}`)
+  //   }
+  // }
+  // function obje(o) { 
+  //   let F = function () {
+      
+  //   }
+  //   F.prototype = o;
+  //   return new F()
+  // }
+  
+  // let sonSl = obje(obj)
+  // console.log(sonSl.name) //寄生式组合继承
+  // console.log(sonSl.introduction()) //我是寄生式组合继承
+  // console.log(sonSl.__proto__) //obj
+
+  //寄生式继承
+  //其实就是在原型式继承得到对象的基础上，在内部再以某种方式来增强对象，然后返回。
+
+function createAnother(original) {
+	var clone = obje(original);
+	clone.sayHi = function() {
+		alert("hi");
+	};
+	return clone;
+}
+
+</script>
+</html>

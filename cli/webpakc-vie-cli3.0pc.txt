@@ -1,0 +1,7 @@
+1使用elemenui
+
+npm i element-ui -S
+
+import 'element-ui/lib/theme-chalk/index.css';
+//按需引入
+npm install babel-plugin-component -D

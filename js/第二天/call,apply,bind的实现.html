@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+  //apply
+  //分析apply fn.apply(obj || null, [params])
+  Function.prototype.myapply = function (obj, params) {
+    obj || (obj = window)
+    obj.fn = this
+    let result = (params && obj.fn(...params)) || obj.fn()
+    delete obj.fn
+    return result
+  }
+  //call
+  Function.prototype.mycall = function (obj, ...params) {
+    obj || (obj = window)
+    obj.fn = this
+    let result = (params.length && obj.fn(...params)) || obj.fn()
+    delete obj.fn
+    return result
+  }
+  //bind
+  Function.prototype.mybind = function (obj, ...data) {
+    let _this = this
+    return function (...params) {
+      let parameter = params.concat(data)
+      _this.call(obj, ...parameter)
+    }
+  }
+
+  let obj = {
+    fn() {
+      console.log(this.name)
+    }
+  }
+
+  let obj1 = {
+     name:'1111'
+  }
+  obj.fn.myapply(obj1)
+  obj.fn.mycall(obj1)
+  let xxx = obj.fn.mybind(obj1)
+  xxx()
+
+</script>
+
+</html>

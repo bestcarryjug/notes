@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+  //手动实现一个new 操作
+  function myNew(fn, ...params) {
+    if (typeof fn === 'function') {
+      //let obj = {}
+      // fn.call(obj, ...params)
+      // obj.__proto__ = fn.prototype ||
+      let ths = Object.create(fn.prototype) //优化一步
+      fn.call(ths, ...params)
+      return obj
+    }
+
+  }
+  const fn = function (name) {
+    this.name = name
+  }
+  fn.prototype.sayName = function () {
+    console.log(`我叫${ this.name}`)
+  }
+
+  let sl = myNew(fn, '小民')
+  console.log(sl.name)
+  console.log(sl.sayName())
+  console.log(sl instanceof fn)
+  console.log(sl.__proto__.constructor)
+  // instanceof 用来判断实例对象是否是构造函数的原型链上
+
+</script>
+
+</html>

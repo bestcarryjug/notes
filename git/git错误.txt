@@ -1,0 +1,28 @@
+1.Another git process seems to be running in this repository, e.g.
+an editor opened by 'git commit'. Please make sure all processes
+are terminated then try again. If it still fails, a git process
+may have crashed in this repository earlier:
+remove the file manually to continue.
+
+ÁíÒ»¸ögit½ø³ÌËÆºõÕıÔÚÕâ¸ö´æ´¢¿âÖĞÔËĞĞ£¬ÀıÈç¡£
+
+¡°git commit¡±´ò¿ªµÄ±à¼­Æ÷¡£ÇëÈ·±£ËùÓĞÁ÷³Ì
+
+ÖÕÖ¹£¬È»ºóÖØÊÔ¡£Èç¹ûÈÔÈ»Ê§°Ü£¬git½ø³Ì
+
+¿ÉÄÜÒÑÔÚ´Ë´æ´¢¿âÖĞ±ÀÀ££º
+
+ÊÖ¶¯É¾³ıÎÄ¼şÒÔ¼ÌĞø¡£
+
+½â¾ö·½°¸£ºrm -f ./.git/index.lock
+
+git ¹ØÁªÔ¶³ÌµØÖ·
+git remote add ±ğÃû url
+git·ÖÖ§²Ù×÷
+¹ØÁªÔ¶³Ì·ÖÖ§
+git push --set-upstream-to origin your_branch
+your_branchÊÇÔ¶³Ì·ÖÖ§¡£
+ Èı.É¾³ı±¾µØÖ¸¶¨µÄÔ¶³ÌµØÖ·
+git remote remove origin É¾³ı¼´¿É
+
+                  ÿÿÿÿÿÿÿÿÿÿÿÿ                                                

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+   function mynew(fn, ...params) {
+    if (typeof fn !== 'function') {
+      throw 'newOperator function the first param must be a function';
+    }
+    let ths = Object.create(fn.prototype)
+    fn.call(ths, ...params)
+    return ths
+  }
+  function name(name) {
+    this.name = name
+  }
+  name.prototype.text = function () {
+    console.log(this.name)
+  }
+
+  let obj= mynew(name, 'xxx')
+
+  obj.text()
+</script>
+
+</html>
