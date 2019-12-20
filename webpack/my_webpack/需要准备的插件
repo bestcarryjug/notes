@@ -1,0 +1,53 @@
+//webpack
+webpack
+webpack-cli
+webpack-dev-server
+//js
+clean-webpack-plugin //清除dist目录
+//html
+html-webpack-plugin //生成html模板
+
+//css
+mini-css-extract-plugin // 分离css文件 
+postcss-cssnext //css兼容插件自动补加前缀 
+css-loader
+less-loader
+less
+style-loader //开发环境
+autoprefixer //添加前缀 
+optimize-css-assets-webpack-plugin 优化和压缩 css 
+css-split-webpack-plugin：针对 css 大文件进行拆分
+purify-css  
+purifycss-webpack  //css tree shaking 清除无用css
+
+//img || url
+file-loader 解析 import/require 导入的文件，将其输出到生产目录，并产生一个 url 地址。 
+url-loader 不超过限定 limit 时，转换为 base64 url。
+
+//babel
+babel-loader 
+@babel/core 
+@babel/preset-env 
+// babel核心包
+core-js@3
+@babel/runtime-corejs2
+//配置按需引入polyfill
+@babel/plugin-import //将插件转化为按需引入
+@babel/plugin-transform-runtime
+@babel/runtime   //解决代码重复问题
+
+//多线程打包
+happypack 
+
+//全局api配置插件
+DefinePlugin
+
+
+//gzip压缩
+webpack-bundle-analyzer 打包分析
+
+//dll 开发环境提供一定的项目启动速度
+add-asset-html-webpack-plugin //dll件路径写入模板
+
+//缓存
+hard-source-webpack-plugin //进行缓存依赖包
